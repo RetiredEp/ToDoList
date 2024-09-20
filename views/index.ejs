@@ -1,0 +1,23 @@
+<%- include ("partials/header.ejs") %>
+
+    <div class="container">
+        <div class="title">E-List</div>
+        <div class="tasks">
+            <% if(locals.task){ %>
+                <% for(let i=0;i<task.length;i++){ %>
+                    <div class="task"><form action="/delete" method="post">
+                        <input type="checkbox" onchange="this.form.submit()" name="value" value="<%= task[i].id %>" id="box">
+                    </form>
+                    <p id="text"><%= task[i].task %></p></div>
+                <% } %>
+            <% } %>
+        </div>
+        <div class="input">
+            <form action="/add" method="post">
+                <input type="text" placeholder="add to list here.." name="task" id="input">
+                <input type="submit" value="add" id="submit">
+            </form>
+        </div>
+    </div>
+
+<%- include ("partials/footer.ejs") %>
